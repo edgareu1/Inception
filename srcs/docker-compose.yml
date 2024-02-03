@@ -35,8 +35,6 @@ services:
     volumes:
       - db-volume:/var/lib/mysql
     restart: always
-    env_file:
-      - .env
 
   wordpress:
     build:
@@ -55,8 +53,6 @@ services:
     volumes:
       - wp-volume:/var/www/
     restart: always
-    env_file:
-      - .env
 
 volumes:
   wp-volume:

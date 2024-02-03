@@ -1,22 +1,23 @@
 name = inception
+env_path = srcs/.env
 
 all:
 	@printf "Launching configuration of ${name}\n"
 	@bash srcs/requirements/wordpress/tools/make_dir.sh
-	@docker-compose -f ./srcs/docker-compose.yml up -d
+	@docker-compose -f ./srcs/docker-compose.yml --env-file ${env_path} up -d
 
 build:
 	@printf "Building configuration of ${name}\n"
 	@bash srcs/requirements/wordpress/tools/make_dir.sh
-	@docker-compose -f ./srcs/docker-compose.yml up -d --build
+	@docker-compose -f ./srcs/docker-compose.yml --env-file ${env_path} up -d --build
 
 down:
 	@printf "Stopping configuration of ${name}\n"
-	@docker-compose -f ./srcs/docker-compose.yml down
+	@docker-compose -f ./srcs/docker-compose.yml --env-file ${env_path} down
 
 re: down
 	@printf "Rebuild configuration of ${name}\n"
-	@docker-compose -f ./srcs/docker-compose.yml up -d --build
+	@docker-compose -f ./srcs/docker-compose.yml --env-file ${env_path} up -d --build
 
 clean: down
 	@printf "Cleaning configuration of ${name}\n"

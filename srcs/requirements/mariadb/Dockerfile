@@ -5,7 +5,8 @@ ARG DB_NAME \
 	DB_USER \
 	DB_PASS
 
-RUN apk update && apk add --no-cache mariadb mariadb-client
+RUN apk update && \
+	apk add --no-cache mariadb mariadb-client
 
 RUN mkdir /var/run/mysqld; \
 	chmod 777 /var/run/mysqld; \
@@ -24,7 +25,8 @@ EXPOSE 3306
 
 COPY requirements/mariadb/conf/db_create.sh .
 
-RUN sh db_create.sh && rm db_create.sh
+RUN sh db_create.sh && \
+	rm db_create.sh
 
 USER mysql
 

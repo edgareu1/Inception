@@ -4,12 +4,12 @@ docker_compose_cmd = @docker-compose -f ./srcs/docker-compose.yml --env-file ${e
 
 all:
 	@printf "Launching configuration of ${name}\n"
-	@bash srcs/requirements/wordpress/tools/make_dir.sh
+	@bash srcs/requirements/mariadb/tools/data_dir_create.sh
 	${docker_compose_cmd} up -d
 
 build:
 	@printf "Building configuration of ${name}\n"
-	@bash srcs/requirements/wordpress/tools/make_dir.sh
+	@bash srcs/requirements/mariadb/tools/data_dir_create.sh
 	${docker_compose_cmd} up -d --build
 
 down:

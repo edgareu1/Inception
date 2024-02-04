@@ -1,5 +1,5 @@
 name = inception
-env_path = srcs/.env
+env_path = /home/efreire-/.env
 
 all:
 	@printf "Launching configuration of ${name}\n"

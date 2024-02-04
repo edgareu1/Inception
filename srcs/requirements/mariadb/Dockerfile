@@ -1,9 +1,9 @@
 FROM alpine:3.16
 
-ARG DB_NAME \
-	DB_ROOT \
-	DB_USER \
-	DB_PASS
+ARG MYSQL_NAME \
+	MYSQL_ROOT_PASSWORD \
+	MYSQL_USER \
+	MYSQL_PASSWORD
 
 RUN apk update && \
 	apk add --no-cache mariadb mariadb-client

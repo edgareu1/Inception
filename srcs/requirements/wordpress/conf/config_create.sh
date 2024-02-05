@@ -13,7 +13,8 @@ if [ ! -f "/var/www/wp-config.php" ]; then
 		\$table_prefix = 'wp_';
 		define( 'WP_DEBUG', false );
 		if ( ! defined( 'ABSPATH' ) ) {
-		define( 'ABSPATH', __DIR__ . '/' );}
+			define( 'ABSPATH', __DIR__ . '/' );
+		}
 		define( 'WP_REDIS_HOST', 'redis' );
 		define( 'WP_REDIS_PORT', 6379 );
 		define( 'WP_REDIS_TIMEOUT', 1 );

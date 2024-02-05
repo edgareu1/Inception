@@ -6,6 +6,8 @@ ARG PHP_VERSION=8 \
 	MYSQL_USER \
 	MYSQL_PASSWORD
 
+# Install Wordpress related packages
+# Adjust the listen settings on the PHP-FPM configuration files
 RUN apk update && \
 	apk upgrade && \
 	apk add --no-cache \
@@ -34,15 +36,19 @@ RUN apk update && \
 
 WORKDIR /var/www
 
+# Install Wordpress
 RUN wget https://wordpress.org/latest.zip && \
 	unzip latest.zip && \
 	cp -rf wordpress/* . && \
 	rm -rf wordpress latest.zip
 
+# Create the WordPress configuration file
 COPY ./requirements/wordpress/conf/config_create.sh .
 
 RUN sh config_create.sh && \
 	rm config_create.sh && \
 	chmod -R 0777 wp-content/
 
+# It starts PHP-FPM in foreground mode
+# Handles PHP requests
 CMD ["/usr/sbin/php-fpm8", "-F"]

@@ -29,12 +29,6 @@ RUN mysql_install_db --user=mysql --datadir=/var/lib/mysql
 # Listen on port 3306 at runtime
 EXPOSE 3306
 
-# Create the DBs (MariaDB and Wordpress), set up users, and grants privileges.
-COPY requirements/mariadb/conf/db_create.sh .
-
-RUN sh db_create.sh && \
-	rm db_create.sh
-
 # Set the user
 USER mysql
 

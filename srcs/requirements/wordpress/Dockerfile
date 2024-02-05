@@ -42,13 +42,6 @@ RUN wget https://wordpress.org/latest.zip && \
 	cp -rf wordpress/* . && \
 	rm -rf wordpress latest.zip
 
-# Create the WordPress configuration file
-COPY ./requirements/wordpress/conf/config_create.sh .
-
-RUN sh config_create.sh && \
-	rm config_create.sh && \
-	chmod -R 0777 wp-content/
-
 # It starts PHP-FPM in foreground mode
 # Handles PHP requests
 CMD ["/usr/sbin/php-fpm8", "-F"]

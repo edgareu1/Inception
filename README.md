@@ -14,3 +14,10 @@ Docker is a type of Container.
 
 ## Docker Compose
 Docker Compose is used to handle multiple containers. We would need multiple containers when we have more than one service to be taken care of, like when we have an MVC app.
+
+## NGINX
+NGINX is a software used for web serving, reverse proxying, caching, and load balancing.
+
+## FPM (FastCGI Process Manager)
+PHP PFM adds additional features for managing PHP processes.
+It's used to handle PHP requests in a more efficient and scalable manner.
